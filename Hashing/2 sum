@@ -1,0 +1,16 @@
+class Solution:
+    # @param A : tuple of integers
+    # @param B : integer
+    # @return a list of integers
+    def twoSum(self, A, B):
+        d ={}
+        for i in range(len(A)):
+            if B - A[i] in d.keys():
+                p = [d[B - A[i]], i + 1]
+                return p
+            else:
+                if A[i] in d.keys():
+                    pass
+                else:
+                    d[A[i]] = i + 1
+        return []
