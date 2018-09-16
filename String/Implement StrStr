@@ -1,0 +1,16 @@
+class Solution:
+    # @param A : string
+    # @param B : string
+    # @return an integer
+    def strStr(self, A, B):
+        A, B = B, A
+        if len(A) == 0 or len(B) == 0:
+            return -1
+    
+        i = 0
+        while i <= len(B)-len(A):
+            if B[i: i + len(A)] == A:
+                return i
+            else:
+                i = i + 1
+        return -1
