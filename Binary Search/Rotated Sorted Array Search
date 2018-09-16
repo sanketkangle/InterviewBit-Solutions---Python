@@ -1,0 +1,122 @@
+class Solution:
+    # @param A : tuple of integers
+    # @param B : integer
+    # @return an integer
+    def search(self, A, B):
+        n =B
+        starting = 0
+        ending = len(A) - 1
+    
+        if A[0] == A[-1]:
+            if A[0] == n:
+                return 0
+            for i in range(len(A)-1):
+                if A[i] != A[i+1]:
+                    starting = i + 1
+                    break
+            for j in range(len(A)-1, 0, -1):
+                if A[j] != A[j-1]:
+                    ending = j - 1
+                    break
+    
+        mid = (starting + ending) // 2
+        ma_ = ending
+        mi_ = starting
+    
+        if A[mi_] <= A[mid] and A[mid] <= A[ma_]:
+            while True:
+                temp_1 = mid
+                if A[mid] == n:
+                    return mid
+                elif n < A[mid]:
+                    temp = mid
+                    temp_1 = mid
+                    mid = (mi_ + mid) // 2
+                    ma_ = temp
+                    if temp_1 == mid:
+                        break
+                else:
+                    temp = mid
+                    temp_1 = mid
+                    mid = (ma_ + mid) // 2
+                    mi_ = temp
+                    if temp_1 == mid:
+                        break
+        else:
+    
+            while True:
+                ##
+                temp_1 = mid
+                if A[mi_] <= A[mid] and A[mid] <= A[ma_]:
+                    break
+                if A[mid] > A[ma_]:
+                    temp = mid
+                    temp_1 = mid
+                    mid = (ma_ + mid) // 2
+                    mi_ = temp
+                    if temp_1 == mid:
+                        break
+                elif A[mid] < A[mi_]:
+                    temp = mid
+                    temp_1 = mid
+                    mid = (mi_ + mid) // 2
+                    ma_ = temp
+                    if temp_1 == mid:
+                        break
+                starting_1 = starting
+                ending_1 = mid
+                starting_2 = ma_
+                ending_2 = len(A) - 1
+    
+            if n <= A[ending_2]:
+                mid = (starting_2 + ending_2) // 2
+                ma_ = ending_2
+                mi_ = starting_2
+    
+                while True:
+                    temp_1 = mid
+                    if A[mid] == n:
+                        return mid
+                    elif n < A[mid]:
+                        temp = mid
+                        temp_1 = mid
+                        mid = (mi_ + mid) // 2
+                        ma_ = temp
+                        if A[mid] == n:
+                            return mid
+                        if temp_1 == mid:
+                            break
+                    else:
+                        temp = mid
+                        temp_1 = mid
+                        mid = (ma_ + mid) // 2
+                        mi_ = temp
+                        if A[mid] == n:
+                            return mid
+                        if temp_1 == mid:
+                            break
+    
+            else:
+                mid = (starting_1 + ending_1) // 2
+                ma_ = ending_1
+                mi_ = starting_1
+    
+                while True:
+                    temp_1 = mid
+                    if A[mid] == n:
+                        return mid
+                    elif n < A[mid]:
+                        temp = mid
+                        temp_1 = mid
+                        mid = (mi_ + mid) // 2
+                        ma_ = temp
+                        if temp_1 == mid:
+                            break
+                    else:
+                        temp_1 = mid
+                        temp = mid
+                        mid = (ma_ + mid) // 2
+                        mi_ = temp
+                        if temp_1 == mid:
+                            break
+        return -1
