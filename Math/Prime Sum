@@ -1,0 +1,27 @@
+class Solution:
+    # @param A : integer
+    # @return a list of integers
+    def primesum(self, A):
+        import math
+        
+        def isprime(n):
+            if n == 2:
+                return 1
+            if n%2 == 0:
+                return 0
+            else:
+                
+                for i in range(3, n//2, 2):
+                    if n%i == 0:
+                        return 0
+                
+                return 1
+        
+        if isprime(A-2) == 1:
+            return ([2, A-2])
+        else:
+            for i in range(3, A//2, 2):
+                if isprime(i) == 1:
+                    if isprime(A-i) == 1:
+                        return [i, A-i]
+                        
