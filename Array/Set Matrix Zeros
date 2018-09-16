@@ -1,0 +1,42 @@
+class Solution:
+    # @param A : list of list of integers
+    # @return the same list modified
+    def setZeroes(self, A):
+        n=len(A[0][:])
+        m=len(A)
+        R = 1
+        C = 1
+        
+        for j in range(n):
+            if A[0][j] == 0:
+                R = 0
+                break
+        for i in range(m):
+            if A[i][0] == 0:
+                C = 0
+                break
+        
+        for i in range(1, m):
+            for j in range(1, n):
+                if A[i][j] == 0:
+                    A[0][j] = 0
+                    A[i][0] = 0
+        
+        for j in range(1, n):
+            if A[0][j] == 0:
+                for i in range(1, m):
+                    A[i][j] = 0
+        for i in range(1, m):
+            if A[i][0] == 0:
+                for j in range(1, n):
+                    A[i][j] = 0
+                    
+        if R == 0:
+            for j in range(n):
+                A[0][j] = 0
+        
+        if C == 0:
+            for i in range(m):
+                A[i][0] = 0        
+        
+        return A
