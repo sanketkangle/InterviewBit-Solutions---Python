@@ -1,0 +1,19 @@
+class Solution:
+    # @param A : unsigned integer
+    # @return an unsigned integer
+    def reverse(self, A):
+        l = []
+        while(A != 0):
+            l.append(A%2)
+            A = A//2
+        n = len(l)
+        for i in range(0, 32 - n):
+            l.append(0)
+        num = 0
+        p = 31
+    
+        for i in range(32):
+            num = num + (l[i]*(2**p))
+            p = p - 1
+        return num
+
