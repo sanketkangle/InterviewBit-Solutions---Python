@@ -1,0 +1,21 @@
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @return an integer
+    def cpFact(self, A, B):
+        def gcd(x, y):
+            while True:
+                if x > y:
+                    x, y = y, x
+                if y % x == 0:
+                    return x
+                else:
+                    t = x
+                    x = y % x
+                    y = t
+        while True:
+            if gcd(A, B) == 1:
+                return A
+            else:
+                A = A//gcd(A, B)
+        
