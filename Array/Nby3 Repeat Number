@@ -1,0 +1,41 @@
+import sys
+class Solution:
+    # @param A : tuple of integers
+    # @return an integer
+    def repeatedNumber(self, A):
+        n = len(A)
+        count_1 = 0
+        count_2 = 0
+        first = sys.maxsize
+        second = sys.maxsize
+    
+        for i in range(len(A)):
+            if first == A[i]:
+                count_1 += 1
+            elif second == A[i]:
+                count_2 += 1
+            elif count_1 == 0:
+                first = A[i]
+                count_1 += 1
+            elif count_2 == 0:
+                second = A[i]
+                count_2 += 1
+            else:
+                count_2 -= 1
+                count_1 -= 1
+    
+        count_2 = 0
+        count_1 = 0
+    
+        for i in range(len(A)):
+            if A[i] == first:
+                count_1 += 1
+            elif A[i] == second:
+                count_2 += 1
+    
+        if count_1 > n//3:
+            return first
+        elif count_2 > n//3:
+            return second
+        else:
+            return -1
