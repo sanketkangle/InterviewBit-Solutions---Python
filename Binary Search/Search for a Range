@@ -1,0 +1,44 @@
+#
+#This solution gave only half points as time limit exided
+#
+
+
+class Solution:
+    # @param A : tuple of integers
+    # @param B : integer
+    # @return a list of integers
+    def searchRange(self, A, B):
+        begin = -1
+        ending = -1
+    
+        #first time element
+        front = len(A)-1
+        back = 0
+        while back <= front:
+            mid = (front + back)//2
+    
+            if A[mid] > B:
+                front = mid - 1
+            elif A[mid] < B:
+                back = mid + 1
+            else:
+                begin = mid
+                front = mid - 1
+        #if not in our array
+        if begin == -1 :
+            return [-1, -1]
+
+        #last time element
+        front = len(A)-1
+        back = begin
+        while back <= front:
+            mid = (front+ back )//2
+    
+            if A[mid] > B:
+                front = mid - 1
+            elif A[mid] < B:
+                back = back + 1
+            else:
+                back = back + 1
+                ending = mid
+        return [begin, ending]
