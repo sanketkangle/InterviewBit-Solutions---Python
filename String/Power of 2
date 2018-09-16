@@ -1,0 +1,12 @@
+class Solution:
+    # @param A : string
+    # @return an integer
+    def power(self, A):
+        A = int(A)
+    
+        while A != 2:
+            if A%2 == 0:
+                A = A // 2
+            else:
+                return 0
+        return 1
