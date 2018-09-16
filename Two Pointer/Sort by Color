@@ -1,0 +1,27 @@
+class Solution:
+    # @param A : list of integers
+    # @return A after the sort
+    def sortColors(self, A):
+        red_count = 0
+        white_count = 0
+        blue_count = 0
+    
+        for i in A:
+            if i == 0:
+                red_count += 1
+            elif i == 1:
+                white_count += 1
+            else:
+                blue_count += 1
+        i = 0
+        for red in range(red_count):
+            A[i] = 0
+            i = i + 1
+        for white in range(white_count):
+            A[i] = 1
+            i = i + 1
+        for blue in range(blue_count):
+            A[i] = 2
+            i = i + 1
+    
+        return A
