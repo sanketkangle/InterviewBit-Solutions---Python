@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : string
+    # @return an integer
+    def romanToInt(self, A):
+            
+        D = {'I':[1,1], 'V':[2,5], 'X':[3,10], 'L':[4,50], 'C':[5, 100], 'D':[6, 500], 'M': [7, 1000]}
+    
+        if len(A) == 0:
+            return 0
+    
+        num = D[A[-1]][1]
+        for i in range(len(A)-2, -1, -1):
+            if D[A[i]][0] < D[A[i+1]][0]:
+                num = num - D[A[i]][1]
+            else:
+                num = num + D[A[i]][1]
+        return num
+
