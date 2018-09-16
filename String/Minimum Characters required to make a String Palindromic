@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : string
+    # @return an integer
+        def solve(self, A):
+            def is_palindromic(A):
+                for i in range(len(A)//2+1):
+                    if A[i] != A[-i-1]:
+                        return 0
+                return 1
+    
+            count = 0
+            while True:
+                if is_palindromic(A) == 1:
+                    return count
+                else:
+                    A = A[:len(A)-1]
+                    count +=1
+
