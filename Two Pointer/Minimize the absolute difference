@@ -1,0 +1,28 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @param C : list of integers
+    # @return an integer
+    def solve(self, A, B, C):
+        i = len(A) - 1
+        j = len(B) - 1
+        k = len(C) - 1
+    
+        diff = abs(max(A[i], B[j], C[k])- min(A[i], B[j], C[k]))
+        while (i > -1 and j > -1 and k > -1):
+            if max(A[i], B[j], C[k]) == A[i]:
+                i = i - 1
+                if diff > abs(max(A[i], B[j], C[k])- min(A[i], B[j], C[k])):
+                    diff  = abs(max(A[i], B[j], C[k])- min(A[i], B[j], C[k]))
+    
+            if max(A[i], B[j], C[k]) == B[j]:
+                j = j - 1
+                if diff > abs(max(A[i], B[j], C[k])- min(A[i], B[j], C[k])):
+                    diff  = abs(max(A[i], B[j], C[k])- min(A[i], B[j], C[k]))
+    
+            if max(A[i], B[j], C[k]) == C[k]:
+                k = k - 1
+                if diff > abs(max(A[i], B[j], C[k])- min(A[i], B[j], C[k])):
+                    diff  = abs(max(A[i], B[j], C[k])- min(A[i], B[j], C[k]))
+    
+        return diff
