@@ -1,0 +1,26 @@
+class Solution:
+    # @param A : string
+    # @return string
+    def reverseWords(self, A):
+        if len(A) == 1 and A[0] != ' ':
+            return A
+        l= ''
+        temp = ''
+        i = len(A)-1
+    
+        while i > 0:
+            temp = ''
+    
+            while A[i] == ' ':
+                   i = i - 1
+    
+            while A[i] != ' ':
+                temp = temp + A[i]
+                i = i - 1
+                if i < 0:
+                    break
+            temp = temp[::-1]
+            temp = temp + ' '
+            l = l + temp
+        l=l[:-1]
+        return l
