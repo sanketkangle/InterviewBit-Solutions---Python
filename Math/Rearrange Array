@@ -1,0 +1,12 @@
+class Solution:
+    # @param A : list of integers
+    # Modify the array A which is passed by reference. 
+    # You do not need to return anything in this case. 
+    def arrange(self, A):
+        le = len(A)
+        
+        for i in range(le):
+            A[i]= A[i] + (A[A[i]]%le)*le
+            
+        for i in range(le):
+            A[i] = A[i]//le
