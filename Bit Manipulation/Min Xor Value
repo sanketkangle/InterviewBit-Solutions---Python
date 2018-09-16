@@ -1,0 +1,12 @@
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def findMinXor(self, A):
+        A.sort()
+        xor_min = 10**9
+    
+        for i in range(len(A)-1):
+            if A[i]^A[i+1] < xor_min:
+                    xor_min = A[i]^A[i+1]
+    
+        return xor_min
