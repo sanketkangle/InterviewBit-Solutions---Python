@@ -1,0 +1,22 @@
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @return an integer
+    def gcd(self, A, B):
+        if A==0:
+            if B != 0:
+                return B
+        if B==0:
+            if A != 0:
+                return A
+        
+        if A > B:
+            A, B = B, A
+        
+        while True:
+            if B%A == 0:
+                return A
+            else:
+                temp = A
+                A = B%A
+                B = temp
