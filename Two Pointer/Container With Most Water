@@ -1,0 +1,11 @@
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def maxArea(self, A):
+        water_max = 0
+        for i in range(len(A)-1):
+            for j in range(i+1,len(A)):
+                if (j-i)*min(A[i], A[j]) > water_max:
+                    water_max = (j-i)*min(A[i], A[j])
+    
+        return water_max
