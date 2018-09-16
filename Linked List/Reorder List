@@ -1,0 +1,63 @@
+# Definition for singly-linked list.
+# class ListNode:
+#    def __init__(self, x):
+#        self.val = x
+#        self.next = None
+
+class Solution:
+    # @param A : head node of linked list
+    # @return the head node in the linked list
+    def rev_half_list(self, A):
+        if True:
+
+            slow_ptr = A
+            fast_ptr = A
+
+            while fast_ptr.next:
+                if fast_ptr.next.next is not None:
+                    fast_ptr = fast_ptr.next.next
+                else:
+                    break
+                slow_ptr = slow_ptr.next
+            ###now slow_ptr is pointing at mid of the list
+
+            ###now we will reverse list above from here
+            prev = slow_ptr.next
+            curr = prev.next
+            prev.next = None
+            while curr:
+                nxt = curr.next
+                curr.next = prev
+                prev = curr
+                curr = nxt
+            slow_ptr.next = prev
+            ##now our linked list is reversed from half
+            return slow_ptr
+
+    def reorderList(self, A):
+        
+        if A is None:
+            reurn
+        elif A.next is None:
+            return A
+        elif A.next.next is None:
+            return A
+        else:
+
+            slow_ptr = self.rev_half_list(A)
+
+            curr = A
+            change = slow_ptr.next
+            slow_ptr.next = None
+
+            while change:
+                nxt = curr.next
+                ch_nxt = change.next
+                curr.next = change
+                if change is None:
+                    break
+                else:
+                    change.next = nxt
+                curr = nxt
+                change = ch_nxt
+            return A
