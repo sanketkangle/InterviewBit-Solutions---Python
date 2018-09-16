@@ -1,0 +1,31 @@
+# Definition for singly-linked list.
+# class ListNode:
+#    def __init__(self, x):
+#        self.val = x
+#        self.next = None
+
+class Solution:
+    # @param A : head node of linked list
+    # @return the head node in the linked list
+    def swapPairs(self, A):
+        prev = None
+        curr = A
+        swap = curr.next
+        while curr.next is not None:
+            swap = curr.next
+           
+            if prev is None:
+                A = swap
+                curr.next = swap.next
+                swap.next = curr
+            else:
+                prev.next = swap
+                if swap is not None:
+                    curr.next = swap.next
+                    swap.next = curr
+                else:
+                    break
+            prev, curr = curr, curr.next
+            if curr is None:
+                break
+        return A
