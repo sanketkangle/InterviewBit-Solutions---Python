@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : string
+    # @param B : integer
+    # @return a list of integers
+    def findPerm(self, A, B):
+        l = []
+        i = 1
+        j = B
+    
+        for key in A:
+            if key == 'I':
+                l.append(i)
+                i += 1
+            else:
+                l.append(j)
+                j -= 1
+        l.append(i)
+        return l
