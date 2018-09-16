@@ -1,0 +1,28 @@
+class Solution:
+    # @param A : tuple of strings
+    # @return a list of list of integers
+    def anagrams(self, A):
+    
+        words_dict = {}
+        indi_dict = {}
+    
+        for word_index in range(len(A)):
+            l = []
+            word = A[word_index]
+            for i in word:
+                l.append(i)
+            l.sort()
+            if l not in words_dict.values():
+                words_dict[word_index+1] = l
+                indi_dict[word_index + 1] = [word_index + 1]
+            else:
+                for key, lis in words_dict.items():
+                    if lis == l:
+                        indi_dict[key].append(word_index + 1)
+        #p = list(indi_dict.values())
+        p = list(indi_dict.values())
+        '''for val in list(indi_dict.values()):
+            if len(val) > 1:
+                p.append(val)'''
+        p.sort()
+        return p
