@@ -1,0 +1,15 @@
+class Solution:
+    # @param A : tuple of integers
+    # @return an integer
+    def repeatedNumber(self, A):
+        A = list(A)
+        n = len(A)
+        for i in range(n):
+            index = A[i]%n
+            A[index] = A[index] + n
+            
+        for j in range(n):
+            if A[j]//n > 1:
+                return j
+        
+        return -1
