@@ -1,0 +1,43 @@
+class Solution:
+    # @param A : string
+    # @return a strings
+    def longestPalindrome(self, A):
+        if len(A) == 1:
+            return A
+        if len(A) == 2:
+            if A[0]==A[1]:
+                return A
+            else:
+                return A[0]
+    
+        
+        temp = 0
+        count = 0
+        for i in range(1,len(A)):
+    
+            #case 1: even no. palendrome
+            temp = 0
+            for j in range(min(i, len(A)-i)):
+                if A[i-j-1] == A[i+j]:
+                    temp = temp + 2
+                else:
+                    j = j-1
+                    break
+            if temp > count:
+                count = temp
+                l=[i-j-1, i+j+1]
+    
+    
+            #case 2: odd no. of palendrome:
+            temp = 1
+            for j in range(1,min(i+1, len(A)-i)):
+                if A[i-j] == A[i+j]:
+                    temp = temp + 2
+                else:
+                    j = j -1
+                    break
+            if temp > count:
+                count = temp
+                l = [i-j, i+j+1]
+    
+        return A[l[0]:l[1]]
