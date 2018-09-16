@@ -1,0 +1,23 @@
+class Solution:
+    # @param A : tuple of integers
+    # @param B : integer
+    # @return an integer
+    def diffPossible(self, A, B):
+        d = {}
+        for i in A:
+            if i in d.keys():
+                d[i]+=1
+            else:
+                d[i] = 1
+        if B == 0:
+            for key in d.keys():
+                if d[key] > 1:
+                    return 1
+            return 0
+        else:
+            for key in d.keys():
+                if key + B in d.keys():
+                    
+                    return 1
+
+            return 0
