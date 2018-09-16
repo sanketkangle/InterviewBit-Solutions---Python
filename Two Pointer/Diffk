@@ -1,0 +1,12 @@
+class Solution:
+    # @param A : list of integers
+    # @param B : integer
+    # @return an integer
+    def diffPossible(self, A, B):
+    
+        for i in range(0, len(A)-1):
+            for j in range(i+1, len(A)):
+                if abs(A[i]-A[j]) == B:
+                    return 1
+        else:
+            return 0
