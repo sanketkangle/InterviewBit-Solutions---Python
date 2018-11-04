@@ -1,0 +1,31 @@
+# Definition for a  binary tree node
+# class TreeNode:
+#    def __init__(self, x):
+#        self.val = x
+#        self.left = None
+#        self.right = None
+
+class Solution:
+    # @param A : root node of tree
+    # @return an integer
+    def height(self, node):
+        if not node:
+            return 0
+            
+        elif not node.right and not node.left:
+            return 1
+        
+        elif not node.right and node.left:
+            return self.height(node.left) +1
+        
+        elif not node.left and node.right:
+            return self.height(node.right)+1
+            
+        else:
+            h1 = self.height(node.left)
+            h2 = self.height(node.right)
+            return min(h1, h2)+1
+        
+    def minDepth(self, A):
+        return self.height(A)
+        
