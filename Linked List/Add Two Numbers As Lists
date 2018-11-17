@@ -1,0 +1,47 @@
+# Definition for singly-linked list.
+# class ListNode:
+#    def __init__(self, x):
+#        self.val = x
+#        self.next = None
+
+class Solution:
+    # @param A : head node of linked list
+    # @param B : head node of linked list
+    # @return the head node in the linked list
+    def length(self, head):
+        curr = head
+        count = 0
+        while curr:
+            count += 1
+            curr = curr.next
+        return count
+    
+    def addTwoNumbers(self, A, B):
+        a = self.length(A)
+        b = self.length(B)
+        if b > a:
+            A,B = B,A
+        curr_B = B
+        curr_A = A
+        sum_ = 0
+        carry = 0
+        while curr_B:
+            temp =curr_A.val
+            curr_A.val = (curr_A.val + curr_B.val + carry)%10
+            carry = (temp + curr_B.val + carry)//10
+            curr_A = curr_A.next
+            curr_B = curr_B.next
+        if carry == 0:
+            return A
+        prev = curr_A
+        while curr_A:
+            temp =curr_A.val
+            curr_A.val = (curr_A.val + carry)%10
+            carry = (temp + carry)//10
+            prev = curr_A
+            curr_A = curr_A.next
+        if carry  == 0:
+            return A
+        prev.next = ListNode(carry)
+        return A
+        
