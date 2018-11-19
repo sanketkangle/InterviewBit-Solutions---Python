@@ -1,0 +1,35 @@
+class Solution:
+    # @param A : integer
+    # @return a strings
+    def countAndSay(self, A):
+        l = ['1']
+        s=''
+        num = 1
+        count = 0
+        if A == 1:
+            return 1
+        else:
+    
+            for j in range(1,A):
+                s= ''
+                i = 0
+                num = int(l[-1][0])
+                while (i < len(l[-1])):
+                    if num == int(l[-1][i]):
+                        count += 1
+                        i += 1
+                        if i == len(l[-1]):
+                            s = s + str(count) + str(num)
+                            l.append(s)
+                            count = 0
+                            break
+                    else:
+                        s = s + str(count) + str(num)
+                        count = 0
+                        if i == len(l[-1]):
+                            l.append(s)
+                            break
+    
+                        num = int(l[-1][i])
+    
+            return l[-1]
