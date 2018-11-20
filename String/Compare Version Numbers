@@ -1,0 +1,51 @@
+class Solution:
+    # @param A : string
+    # @param B : string
+    # @return an integer
+    def numList(self, s):
+        l = []
+        temp = ''
+        for i in s:
+            if i == '.':
+                l.append(int(temp))
+                temp =''
+            else:
+                temp = temp + i
+        l.append(int(temp))
+        return l
+    
+    def remove_(self, s):
+        while True:
+            if len(s) != 0:
+                if s[-1] == 0:
+                    s.pop()
+                else:
+                    break
+            else:
+                break
+        return s
+        
+    
+    def compareVersion(self, A, B):
+        one = self.numList(A)
+        two = self.numList(B)
+        #return [one, two]
+        if one == two:
+            return 0
+        else:
+            one = self.remove_(one)
+            two = self.remove_(two)
+            
+            for i in range(min(len(one), len(two))):
+                if one[i] > two[i]: return 1
+                if one[i] < two[i]: return -1
+            
+            if len(one)>len(two):
+                return 1
+            if len(two)>len(one):
+                return -1
+                
+            else:
+                return 0
+                
+        
