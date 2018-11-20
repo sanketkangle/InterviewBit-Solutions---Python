@@ -1,0 +1,53 @@
+class Solution:
+    # @param A : string
+    # @param B : string
+    # @return a strings
+    def addBinary(self, A, B):
+
+        # len(A)>len(B)
+
+        if len(B) > len(A):
+            A, B = B, A
+        A = A[::-1]
+        B = B[::-1]
+        s = 0
+        c = 0
+        ans = ''
+        for i in range(len(B)):
+            p = A[i]
+            w= B[i]
+            j=[int(p), int(w), c]
+            j.sort()
+            if j == [0, 0, 0]:
+                s = 0
+                c = 0
+            if j == [0, 0, 1]:
+                s = 1
+                c = 0
+            if j == [0, 1, 1]:
+                s = 0
+                c = 1
+            if j == [1, 1, 1]:
+                s = 1
+                c = 1
+            ans += str(s)
+        for i in range(len(B), len(A)):
+            l = [int(A[i]), c]
+            l.sort()
+            if l == [0, 0]:
+                s = 0
+                c = 0
+            elif l == [0, 1]:
+                s = 1
+                c = 0
+            else:
+                s = 0
+                c = 1
+            ans += str(s)
+        if c == 1:
+            ans += str(c)
+        ans = ans[::-1]
+        return ans
+
+            
+        
