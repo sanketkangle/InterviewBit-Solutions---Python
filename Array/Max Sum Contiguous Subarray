@@ -1,0 +1,21 @@
+class Solution:
+	# @param A : tuple of integers
+	# @return an integer
+	def maxSubArray(self, A):
+	    c = 0
+	    for i in A:
+	        if i >= 0:
+	            c = 1
+	    if c==0:
+	        return max(A)
+
+	    curr_sum = 0
+	    max_sum = 0
+	    for i in A:
+	       temp = curr_sum
+	       curr_sum += i
+	       if curr_sum < 0:
+	           curr_sum = 0
+	       if curr_sum > max_sum:
+	           max_sum = curr_sum
+	    return max_sum
