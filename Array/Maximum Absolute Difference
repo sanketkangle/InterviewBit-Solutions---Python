@@ -1,0 +1,18 @@
+class Solution:
+    # @param A : list of integers
+    # @return an integer
+    def maxArr(self, A):
+        
+        plus = []
+        minus = []
+        for i in range(len(A)):
+            plus.append(A[i]+i)
+            minus.append(A[i]-i)
+            
+        a = max(plus) - min(plus)
+        b = max(minus) - min(minus)
+        return max(a,b)
+            
+            
+
+                
