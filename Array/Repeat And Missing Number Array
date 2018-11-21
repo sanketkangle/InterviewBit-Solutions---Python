@@ -1,0 +1,28 @@
+class Solution:
+    # @param A : tuple of integers
+    # @return a list of integers
+    def repeatedNumber(self, A):
+        act_sum = 0
+        sqactsum = 0
+        flag = False
+        n = len(A)
+        
+        for i in A:
+            act_sum += i
+            sqactsum += i*i
+            
+        thsum = (n*(n+1))//2
+        sqthsum = (n*(n+1)*(2*n+1))//6
+        
+        x = act_sum - thsum
+        y = sqactsum - sqthsum
+        h = y//x
+        
+        repeated = (x + h)//2
+        missing = (h - x)//2
+        
+        return [repeated, missing]
+        
+ 
+            
+        
