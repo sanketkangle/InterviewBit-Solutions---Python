@@ -3,7 +3,11 @@ class Solution:
     # @param B : list of integers
     # @return an integer
     def coverPoints(self, A, B):
+        #number of steps
         no = 0
+        # if we calculate minimum steps between each consecutive pair of nodes, 
+        # then we will get overall minimum steps
         for i in range(len(A)-1):
+           #As we can have 
            no = no + max(abs(A[i] - A[i+1]), abs(B[i] - B[i+1]))
         return no
